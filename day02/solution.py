@@ -27,7 +27,7 @@ n = 3
 
 # Check each line
 sum_safes = 0
-for i, line in enumerate(lines):
+for line in enumerate(lines):
     if is_increasing_by_up_to_n(line, n):
         sum_safes += 1
     elif is_decreasing_by_up_to_n(line, n):
@@ -38,7 +38,7 @@ print("Safe reports:", sum_safes)
 
 sum_safes = 0
 # Check each line
-for i, line in enumerate(lines):
+for line in enumerate(lines):
     if is_increasing_by_up_to_n(line, n):
         sum_safes += 1
     elif is_decreasing_by_up_to_n(line, n):
