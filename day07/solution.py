@@ -1,6 +1,6 @@
 import itertools
 
-def evaluate_expression(nums, ops, cache):
+def evaluate_expression(nums, ops, calibration, cache):
     # Search first in cache to increase code efficiency
     key = (tuple(nums), tuple(ops))
     if key in cache:
@@ -9,6 +9,8 @@ def evaluate_expression(nums, ops, cache):
     # Calculate expression
     result = nums[0]
     for i in range(1, len(nums)):
+        if result > calibration:
+            return result
         if ops[i-1] == '+':
             result += nums[i]
         elif ops[i-1] == '*':
@@ -40,7 +42,7 @@ def check_calibration(data, is_part2):
         match_found = False
         cache = {} 
         for combination in all_combinations:
-            if evaluate_expression(measurements, combination, cache) == result:
+            if evaluate_expression(measurements, combination, result, cache) == result:
                 match_found = True
                 total_results += result
                 break
